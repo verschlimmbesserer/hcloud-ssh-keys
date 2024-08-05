@@ -1,0 +1,12 @@
+---
+
+- name: "Add ssh-keys to HCloud project"
+  hetzner.hcloud.ssh_key:
+    api_token: "{{ hcloud_api_token }}"
+    name: "{{ item.key }}"
+    public_key: "{{ item.value.public_key }}"
+    state: "{{ item.value.state | default('present') }}"
+    labels: "{{ item.value.labels | default(omit) }}"
+    fingerprint: "{{ item.value.fingerprint | default(omit) }}"
+    id: "{{ item.value.id | default(omit) }}"
+  loop: "{{ hcloud_ssh_keys | dict2items }}"

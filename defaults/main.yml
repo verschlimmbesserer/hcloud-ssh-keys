@@ -1,0 +1,7 @@
+---
+# defaults file for hcloud-ssh-keys
+hcloud_ssh_keys:
+  joedoe:
+    public_key: ""
+    default_deploy_key: ""
+    state: present
